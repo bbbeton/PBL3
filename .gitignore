@@ -1,0 +1,9 @@
+*.exe
+*.json
+*.vscode
+*.pyc
+__pycache__/
+*.txt
+*.DSstore
+czujniki/config.py
+server/config.py

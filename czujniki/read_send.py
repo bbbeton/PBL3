@@ -68,7 +68,7 @@ def send_data(temperature, gas_state):
     temp_response = requests.post(temp_url, data=json.dumps(temp_payload), headers={'Content-Type': 'application/json'})
     print(f"Temp Response: {temp_response.status_code}")
 
-    if smoke_response.status_code == 200 and temp_response.status_code == 200:
+    if smoke_response.status_code == 201 and temp_response.status_code == 201:
         return smoke_response.json(), temp_response.json()
     else:
         print(f"Unexpected response - Smoke: {smoke_response.status_code}, {smoke_response.content}")

@@ -50,10 +50,6 @@ def detect_gas():
 def send_data(temperature, gas_state):
     data = {"name": "Sensor", "value": temperature, "smoke_value": gas_state}
     print(data)
-    response = requests.post(API_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-    print(response.status_code)
-    if response.status_code == 201 and response.content:
-        return response.json()
     smoke_url = f"{API_URL}/smoke/"
     temp_url = f"{API_URL}/temp/"
 

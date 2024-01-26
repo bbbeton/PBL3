@@ -48,14 +48,12 @@ def detect_gas():
     return gas_state
 
 def send_data(temperature, gas_state):
-<<<<<<< HEAD
     data = {"name": "Sensor", "value": temperature, "smoke_value": gas_state}
     print(data)
     response = requests.post(API_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
     print(response.status_code)
     if response.status_code == 201 and response.content:
         return response.json()
-=======
     smoke_url = f"{API_URL}/smoke/"
     temp_url = f"{API_URL}/temp/"
 
@@ -72,7 +70,6 @@ def send_data(temperature, gas_state):
 
     if smoke_response.status_code == 200 and temp_response.status_code == 200:
         return smoke_response.json(), temp_response.json()
->>>>>>> c47dca5a71e0c0d61dd632dc38dae491ea3edb78
     else:
         print(f"Unexpected response - Smoke: {smoke_response.status_code}, {smoke_response.content}")
         print(f"Unexpected response - Temp: {temp_response.status_code}, {temp_response.content}")

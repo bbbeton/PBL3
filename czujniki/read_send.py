@@ -61,11 +61,11 @@ def send_data(temperature, gas_state):
     temp_payload = {"temp_value": temperature}
 
     print(f"Smoke URL: {smoke_url}\nSmoke Payload: {smoke_payload}")
-    smoke_response = requests.put(smoke_url, data=json.dumps(smoke_payload), headers={'Content-Type': 'application/json'})
+    smoke_response = requests.post(smoke_url, data=json.dumps(smoke_payload), headers={'Content-Type': 'application/json'})
     print(f"Smoke Response: {smoke_response.status_code}")
 
     print(f"Temp URL: {temp_url}\nTemp Payload: {temp_payload}")
-    temp_response = requests.put(temp_url, data=json.dumps(temp_payload), headers={'Content-Type': 'application/json'})
+    temp_response = requests.post(temp_url, data=json.dumps(temp_payload), headers={'Content-Type': 'application/json'})
     print(f"Temp Response: {temp_response.status_code}")
 
     if smoke_response.status_code == 200 and temp_response.status_code == 200:

@@ -42,17 +42,17 @@ GPIO.setup(DO_PIN, GPIO.IN)
 def detect_gas():
     gas_present = GPIO.input(DO_PIN)
     if gas_present == GPIO.LOW:
-        gas_state = 1
+        gas_state = 1.0
     else:
-        gas_state = 0
+        gas_state = 0.0
     return gas_state
 
 def send_data(temperature, gas_state):
     data = {"name": "Sensor", "value": temperature, "smoke_value": gas_state}
     print(data)
-    response = requests.put(API_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
+    response = requests.post(API_URL, data=json.dumps(data), headers={'Content-Type': 'application/json'})
     print(response.status_code)
-    if response.status_code == 200 and response.content:
+    if response.status_code == 201 and response.content:
         return response.json()
     else:
         print(f"Unexpected response: {response.status_code}, {response.content}")
